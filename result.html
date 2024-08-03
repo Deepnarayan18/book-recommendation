@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding-top: 50px; /* Add padding to ensure the card is visible */
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5c518, #f0c400);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .books {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center align the book cards */
+        }
+
+        .book-card {
+            background: #fff;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            width: calc(33% - 20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .book-card h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .book-card p {
+            margin: 5px 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Book Recommendations</h1>
+            <a href="/">Back</a>
+            {% if books %}
+            <div class="books">
+                {% for book in books %}
+                <div class="book-card">
+                    
+                    <h2>{{ book['title'] }}</h2>
+                    <p><strong>Author(s):</strong> {{ book['authors'] }}</p>
+                    <p><strong>Rating:</strong> {{ book['average_rating'] }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>{{ message }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
